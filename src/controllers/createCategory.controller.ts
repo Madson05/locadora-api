@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { v4 as uuidV4 } from "uuid";
 
 const categories = [];
 
@@ -6,11 +7,15 @@ class CriateCategoryController {
   execute(req: Request, res: Response) {
     const { name, description } = req.body;
 
-    categories.push({
+    const category = {
+      id: uuidV4(),
       name,
-      description,
+      description
+    };
+    categories.push({
+      category
     });
-    return res.status(201).end();
+    return res.status(201).send();
   }
 }
 
