@@ -1,7 +1,11 @@
 import Category from "../models/Category";
 
 class CreateCategoryRepository{
-  private categories: Category[] = [];
+  private categories: Category[];
+  constructor(){
+    this.categories = [];
+  }
+  
   public async create(name: string, description: string): Promise<Category>{
     const category = new Category();
     Object.assign(category, {
