@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+
+  ecommerce_database:
+    container_name: locadora_database
+    image: postgres
+    ports:
+      - ${DATABASE_EXPOSE_PORT}:${DATABASE_PORT}
+    env_file: "./.env"
+
+    volumes:
+      - /postgres/data
+  
+    networks:
+      - locadora_network
+
+
+networks:
+  locadora_network:
+    driver: bridge
