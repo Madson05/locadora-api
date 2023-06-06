@@ -1,6 +1,6 @@
 import Category from "../models/Category";
 
-class CreateCategoryRepository{
+class categoriesRepository{
   private categories: Category[];
   constructor(){
     this.categories = [];
@@ -17,6 +17,10 @@ class CreateCategoryRepository{
     
     return category;
   }
+
+  public async list(): Promise<Category[]>{
+    return this.categories;
+  }
 }
 
-export default new CreateCategoryRepository();
+export default new categoriesRepository();
