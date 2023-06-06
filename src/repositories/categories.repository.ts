@@ -21,6 +21,14 @@ class categoriesRepository{
   public async list(): Promise<Category[]>{
     return this.categories;
   }
+
+  public async findByName(name: string): Promise<Category | null>{
+    const category = this.categories.find(category => category.name === name);
+    if(!category){
+      return null;
+    }
+    return category;
+  }
 }
 
 export default new categoriesRepository();
