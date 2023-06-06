@@ -12,4 +12,4 @@ class CreateCategoryService{
 
 }
 
-export default  CreateCategoryService 
+export default new CreateCategoryService 

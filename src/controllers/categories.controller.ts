@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import categoriesRepository from "../repositories/categories.repository";
 
 
 import categoriesService from "../repositories/categories.repository";
@@ -11,12 +12,13 @@ class categoriesController {
     const { name, description } = req.body;
     
     
-    res.send(await new CreateCategoryService().execute(name, description));
+    res.send(await CreateCategoryService.execute(name, description));
 
   }
 
   async list(req: Request, res: Response) {
-    res.send(await createCategoryRepository.list())
+    res.send(await categoriesRepository.list())
+    
   }
 
   
