@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
+import ICreateCategore from "../@types/ICreateCategore";
 import categoriesRepository from "../repositories/categories.repository";
 
-
-import categoriesService from "../repositories/categories.repository";
 import CreateCategoryService from "../services/CreateCategory.service";
 
 
@@ -10,9 +9,9 @@ class categoriesController {
 
   async create(req: Request, res: Response) {
     const { name, description } = req.body;
+    const category: ICreateCategore = {name, description};
     
-    
-    res.send(await CreateCategoryService.execute(name, description));
+    res.send(await CreateCategoryService.execute(category));
 
   }
 

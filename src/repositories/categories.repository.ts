@@ -1,3 +1,4 @@
+import ICreateCategore from "../@types/ICreateCategore";
 import Category from "../models/Category";
 
 class categoriesRepository{
@@ -6,16 +7,15 @@ class categoriesRepository{
     this.categories = [];
   }
   
-  public async create(name: string, description: string): Promise<Category>{
-    const category = new Category();
-    Object.assign(category, {
-      name,
-      description,
+  public async create(category: ICreateCategore): Promise<Category>{
+    const categoryCreated = new Category();
+    Object.assign(categoryCreated, {
+      ...category,
       created_at: new Date()
     });
-    this.categories.push(category);
+    this.categories.push(categoryCreated);
     
-    return category;
+    return categoryCreated;
   }
 
   public async list(): Promise<Category[]>{

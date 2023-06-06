@@ -1,13 +1,15 @@
+import ICreateCategore from "../@types/ICreateCategore";
+import Category from "../models/Category";
 import categoriesRepository from "../repositories/categories.repository";
 
 class CreateCategoryService{
 
-  public async execute(name: string, description: string){
-    const categoryAlreadyExists = await categoriesRepository.findByName(name);
+  public async execute(category: ICreateCategore): Promise<Category| {error: string}>{
+    const categoryAlreadyExists = await categoriesRepository.findByName(category.name);
     if(categoryAlreadyExists){
       return {error: "Category already exists"};
     }
-    await categoriesRepository.create(name, description);
+    return await categoriesRepository.create(category);
   }
 
 }
