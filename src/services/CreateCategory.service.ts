@@ -17,6 +17,10 @@ class CreateCategoryService{
     }
     return await this.categoriesRepository.create(category);
   }
+  // este metodo será removido
+  list(){
+    return this.categoriesRepository.list();
+  }
 
 }
 

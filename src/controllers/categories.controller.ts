@@ -1,30 +1,19 @@
 import { Request, Response } from "express";
 import ICreateCategore from "../@types/ICreateCategore";
-import CategoriesRepository from "../repositories/categories.repository";
-
 import CreateCategoryService from "../services/CreateCategory.service";
 
-
 class categoriesController {
+  constructor(private service: CreateCategoryService) {}
 
-  async create(req: Request, res: Response) {
-
-    const categoriesRepository = new CategoriesRepository();
-
-    const createCategoryService = new CreateCategoryService(categoriesRepository);
-
+  create = async (req: Request, res: Response) => {
     const { name, description } = req.body;
-    const category: ICreateCategore = {name, description};
-    res.send(await createCategoryService.execute(category));
-
+    const category: ICreateCategore = { name, description };
+    res.send(await this.service.execute(category));
   }
 
-  async list(req: Request, res: Response) {
-    const categoriesRepository = new CategoriesRepository();
-    res.send(await categoriesRepository.list())
+  list = async (req: Request, res: Response) => {
+    res.send(await this.service.list())
   }
-
-  
 }
 
-export default new categoriesController();
+export default categoriesController;
