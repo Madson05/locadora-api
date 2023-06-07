@@ -31,4 +31,4 @@ class categoriesRepository{
   }
 }
 
-export default new categoriesRepository();
+export default categoriesRepository;
