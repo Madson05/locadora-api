@@ -1,5 +1,5 @@
-import ICreateCategore from "../@types/ICreateCategore";
-import Category from "../modules/cars/models/Category";
+import ICreateCategore from "../../../@types/ICreateCategore";
+import Category from "../models/Category";
 import { ICategoryRepository } from "./ICategoriesRepository";
 
 class categoriesRepository implements ICategoryRepository {
