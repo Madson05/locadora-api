@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ICreateCategore from "../@types/ICreateCategore";
+import ICreateCategore from "../../../@types/ICreateCategore";
 import CreateCategoryService from "../services/CreateCategory.service";
 
 class categoriesController {
